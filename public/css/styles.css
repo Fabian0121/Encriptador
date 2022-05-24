@@ -1,0 +1,82 @@
+:root{
+    --primary-color : blue;
+    --secundary-color : rgb(7, 255, 7);
+    --danger-color : red;
+    --background : rgb(227, 235, 208) ; 
+    --tittles : green;
+    --border : rgb(1, 64, 136);
+}
+body{
+    background-color: rgb(1, 64, 136);
+}
+.container-body{
+    margin-right: 15%;
+    margin-left: 15%;
+    margin-top: 7%;
+    background-color: var(--background);
+}
+.container-main{
+    text-align: center;
+    padding-bottom: 5%;
+}
+.container-tittle{
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    font-size: 14pt;
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+}
+.container-main-inputs{
+    padding-top: 0.2%;
+    padding-bottom: 0.2%;
+    margin-right: 15%;
+    margin-left: 15%;
+    text-align: left;
+}
+.tittle-2{
+    font-size: 15pt;
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+}
+.container-alertas{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.alertas{
+    
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+    font-weight: bold;
+    font-weight: bold;
+}
+.container-inputs{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.input-1{
+    font-size: 12pt;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 0;
+    border-left: 3;
+    border-left-color: var(--primary-color);
+    size: 10pt;
+    background-color: transparent;
+}
+.container-button{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.container-results{
+    margin-right: 15%;
+    margin-left: 15%;
+    margin-top: 2%;
+    text-align: left;
+}
+.container-alerta{
+    margin-top: 2%;
+}
+.resultados
+{
+    margin-top: 2%;
+    font-size: 11pt;
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+    font-weight: bold;
+}
