@@ -1,6 +1,6 @@
 <?php
 
-namespace Practica1;
+namespace Datos;
 
 class Conexion
 {
@@ -11,7 +11,7 @@ class Conexion
 	    $host ='localhost';
 	    $usuario ='root';
 	    $contrasenia = '';
-	    $base ='practica1';
+	    $base ='usuario';
 		$this->con = mysqli_connect($host, $usuario, $contrasenia, $base);
  		mysqli_query($this->con,"SET NAMES 'utf8'");
 
