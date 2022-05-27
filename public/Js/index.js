@@ -7,22 +7,22 @@ const labelResultados = document.getElementById("results");
 let inputMessagge;
 let alfabeto = ["0", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "ñ", "o", "p", "q", "r", "s", "t", "u", "v", "x", "y", "z", "_"];
 
-buttonEncriptar.onclick = pruebas;
+buttonEncriptar.onclick = registrar;
 
-function pruebas() {
+function registrar() {
     labelAlertas.textContent = null;
     labelResultados.textContent = null,
     labelTitulos.textContent = null;
     inputMessagge = document.getElementById("mensaje").value;
     let cadena = String(inputMessagge);
     cadena = cadena.replace(/\s/gi, "0");
-    let regex = /^([A-Za-z-0])/g;
+    let numerosBusqueda = cadena.filter(element => elemento > 0);
     if (cadena.length <= 0) {
         labelAlertas.style.color = "red";
         labelAlertas.textContent = "Ingresa un valor valido";
     }
     else
-        if (regex.test(cadena) != true) {
+        if (numerosBusqueda.length != 0) {
             labelAlertas.style.color = "red";
             labelAlertas.textContent = "Ingresa solamente alfabeto";
         }
@@ -35,7 +35,7 @@ function pruebas() {
             operaciones(resultado);
         }
 }
-
+//Sustituir valores para encriptar
 function sustitucion(cadena, alfabeto) {
     let palabra = cadena.split("");
     let alfabeto1 = alfabeto;
@@ -52,7 +52,7 @@ function sustitucion(cadena, alfabeto) {
     }
     return arrayVacio;
 }
-
+//operaciones para realizar el encriptado
 function operaciones(cadena) {
     let array1 = cadena;
     let matriz = [[1, 2, 1], [0, -1, 3], [2, 1, 0]];

@@ -25,17 +25,17 @@ class Usuario extends Conexion
     {
         $verificar = Usuario::verificarUsuario($this->correo);
         if ($verificar) {
-            $respuesta["estatus"] = "0";
-            $respuesta["Mensaje"] = "Ya existe este usuario";
-            echo json_encode($respuesta);
+            $respuesta["estatus"] = 0;
+            $respuesta["mensaje"] = "Ya existe este usuario cambia correo";
+            echo json_encode($respuesta, JSON_FORCE_OBJECT);
         } else {
             //Query para mandar los datos y registrarlos
             $pre = mysqli_prepare($this->con, "INSERT INTO usuarios(nombre,apellidoP,apellidoM,correo,pass) VALUES (?,?,?,?,?)");
             $pre->bind_param("sssss", $this->nombre, $this->apellidoP, $this->apellidoM, $this->correo, $this->password);
             $pre->execute();
-            $respuesta["estatus"] = "1";
-            $respuesta["Mensaje"] = "Usuario registrado";
-            echo json_encode($respuesta);
+            $respuesta["estatus"] = 1;
+            $respuesta["mensaje"] = "Usuario registrado";
+            echo json_encode($respuesta, JSON_FORCE_OBJECT);
         }
     }
     //Funcion para validar usuario

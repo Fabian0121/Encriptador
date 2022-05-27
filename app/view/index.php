@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles.css" rel="stylesheet" type="text/css">
+    <link href="public/css/styles.css" rel="stylesheet" type="text/css">
     <title>Encriptador</title>
 </head>
+
 <body>
     <div class="container-body">
         <div class="container-main">
@@ -36,9 +37,13 @@
                 <div class="container-alerta">
                     <label class="resultados" id="results"> </label>
                 </div>
+                <div class="container-button">
+                    <button type="button" onclick="window.location.href='http://localhost/App-encriptador/index.php?controller=usuario&action=cerrarSesion'"> Salir
+                </div>
             </div>
         </div>
     </div>
-    <script src="index.js"></script>
+    <script src="public/Js/index.js"></script>
 </body>
+
 </html>

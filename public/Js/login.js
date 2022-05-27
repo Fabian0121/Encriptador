@@ -19,16 +19,6 @@ function validador() {
         let resultado = sustitucion(cadena);
         let encriptado = operaciones(resultado);
         console.log(encriptado);
-        //$(document).ready(function(){
-        /* $.post('http://localhost/App-encriptador/index.php?controller=usuario&action=iniciarSesion', {
-             "correo": email,
-             "pass": encriptado
-           },function(data) {
-             console.log(data.estatus);
-             if(data.estatus === 0){
-                 labelAlertas.textContent = data.mensaje;
-             }
-         });*/
         datos = { "correo": email, "pass": encriptado };
         $.ajax({
             url: "http://localhost/App-encriptador/index.php?controller=usuario&action=iniciarSesion",
@@ -48,7 +38,6 @@ function validador() {
             }
 
         });
-        //});
 
     }
 }
@@ -68,7 +57,7 @@ function sustitucion(cadena) {
     }
     return arrayVacio;
 }
-
+//operaciones para realizar el encriptado
 function operaciones(cadena) {
     let array1 = cadena;
     let matriz = [[1, 2, 1], [0, -1, 3], [2, 1, 0]];

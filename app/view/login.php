@@ -45,12 +45,11 @@
                         <span class="errores" id="passError"></span>
                     </div>
                     <br>
-                    <div class="btn">
-                        <button type="submit" id = "btnEnviar" class=""> Iniciar sesion
-                    </div>
                 </form>
-                
-                <p class="info">Registrarse</p>
+                 <div class="btn">
+                        <button type="buttton" id = "btnEnviar" class=""> Iniciar sesion
+                    </div>
+                <p class="info"><a href="http://localhost/App-encriptador/index.php?controller=usuario&action=registrarseView">Registrarse</a></p>
             </div>
         </div>
     </div>

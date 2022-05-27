@@ -23,13 +23,22 @@ class usuarioController
 	//Funcion para registrarse
 	function crearRegistro()
 	{
-		$usuario = new Usuario();
-		$usuario->nombre = $_POST['nombre'];
-		$usuario->apellidoP = $_POST['apellidoP'];
-		$usuario->apellidoM = $_POST['apellidoM'];
-		$usuario->correo = $_POST['correo'];
-		$usuario->password = $_POST['pass'];
-		$usuario->registrarUsuario();
+		if($_POST['pass1'] != $_POST['pass2'])
+		{
+			$resultado['estatus'] = 0;
+			$resultado['mensaje'] = "Error revisa que los password se han iguales";
+			echo json_encode($resultado, JSON_FORCE_OBJECT);
+		}
+		else
+		{
+			$usuario = new Usuario();
+			$usuario->nombre = $_POST['nombre'];
+			$usuario->apellidoP = $_POST['apellidoP'];
+			$usuario->apellidoM = $_POST['apellidoM'];
+			$usuario->correo = $_POST['correo'];
+			$usuario->password = $_POST['pass1'];
+			$usuario->registrarUsuario();
+		}
 	}
 	function loginView()
 	{
