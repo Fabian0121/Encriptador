@@ -1,35 +1,76 @@
 <?php
 require 'app/Model/Usuario.php';
+
 use Datos\Usuario;
-class usuarioController{
-    public function __construct(){
 
-    }
-
-    function saludo()
-    {
-        $nombre = $_POST['nombre'];
-        $apellidoP = $_POST['apellidoP'];
-        $apellidoM = $_POST['apellidoM'];
-        $correo = $_POST['correo'];
-        $password = $_POST['password'];
-    }
-    //
-    function crearRegistro (){
+class usuarioController
+{
+	public function __construct()
+	{
+		if ($_GET["action"] == "inicioView") {
+			if (!isset($_SESSION["id"])) {
+				echo "No hay sesion";
+				header("Location:/App-encriptador/index.php?controller=usuario&action=iniciarSesion");
+			}
+		}
+	}
+	//Funcion para registrarse
+	function crearRegistro()
+	{
 		//Llamo a la vista registro
 		//require "app/Views/Registro.php";
 		$usuario = new Usuario();
 		//Mandar datps
- 		$usuario->nombre=$_POST['nombre'];
- 		$usuario->apellidoP=$_POST['apellidoP'];
- 		$usuario->apellidoM=$_POST['apellidoM'];
- 		$usuario->correo=$_POST['correo'];
- 		$usuario->password=$_POST['pass'];
- 		$usuario->registrarUsuario();
-        
-         echo $usuario;
+		$usuario->nombre = $_POST['nombre'];
+		$usuario->apellidoP = $_POST['apellidoP'];
+		$usuario->apellidoM = $_POST['apellidoM'];
+		$usuario->correo = $_POST['correo'];
+		$usuario->password = $_POST['pass'];
+		$usuario->registrarUsuario();
 	}
-    /*
+	//Funcion para iniciar sesion
+	function iniciarSesion()
+	{
+		echo "iniciaseion";
+		if (isset($_POST['correo']) && isset($_POST['pass'])) {
+			//Realiza una consulta
+			$verificar = Usuario::verificarLogin($_POST['correo'], $_POST['pass']);
+			if (!$verificar) {
+				//Manda mensaje de error
+				$resultado["estatus"] = "0";
+				$resultado["mensaje"] = "Error en los datos, revisa tu contraseña o correo";
+				echo json_encode($resultado);
+			} else {
+				//Se crea una sesion
+				$_SESSION['id'] = $verificar->id;
+				$_SESSION['nombreUsuario'] = $verificar->nombre . $verificar->apellidoP . $verificar->apellidoM;
+				$_SESSION['correo'] = $verificar->correo;
+				//Se redirrecciona a la pagina principal
+				header("Location:/App-encriptador/index.php?controller=usuario&action=inicioView");
+			}
+		}
+		else{
+			$resultado["estatus"] = "0";
+			$resultado["mensaje"] = "Error en los datos, agrega algo en los campos";
+			echo json_encode($resultado);
+		}
+	}
+	//Muestra pantalla de inicio en encriptador
+	function inicioView()
+	{
+		echo "Bienvenido";
+	}
+	//Cierra sesion
+	function cerrarSesion()
+	{
+		SESSION_DESTROY();
+		if (isset($_SESSION['id']))
+			unset($_SESSION['id']);
+		$_SESSION['id'] = false;
+
+		header("Location:/App-encriptador/index.php?controller=usuario&action=iniciarSesion");
+	}
+	/*
     //se usa para verficar si se inicio sesion
 	public function __construct (){
 		if ($_GET["action"]=="home") {
@@ -79,4 +120,3 @@ class usuarioController{
         }
     */
 }
-?>
