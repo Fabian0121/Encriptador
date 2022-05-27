@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../../public/css/styleLogin.css" th:href="@{/css/index.css}">
+    <link rel="stylesheet" type="text/css" href="public/css/styleLogin.css" th:href="@{/css/index.css}">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Inicio de sesion</title>
+   
 </head>
 
 <body>
@@ -18,13 +20,13 @@
                 </div>
             </div>
             <div class="form-login">
-                <form>
+                <form id="form1" name="form1">
                     <div class="tittles">
                         <label class="tittless">Ingresa tu correo</label>
                     </div>
                     <br>
                     <div class="inputs">
-                        <input class="inputss" type="email" placeholder="example@gmail.com">
+                        <input class="inputss" id = "correo" type="email" placeholder="example@gmail.com" name="correo" required>
                         
                     </div>
                     <div class="">
@@ -36,22 +38,24 @@
                     </div>
                     <br>
                     <div class="inputs">
-                        <input class="inputss" type="password" placeholder="********">
+                        <input class="inputss" id = "pass" type="password" placeholder="Solo letras" name="pass" required>
                         
                     </div>
                     <div class="">
-                        <span class="errores">ff</span>
+                        <span class="errores" id="passError"></span>
                     </div>
                     <br>
                     <div class="btn">
-                        <button type="submit" class="btn-summit"> Iniciar sesion
+                        <button type="submit" id = "btnEnviar" class=""> Iniciar sesion
                     </div>
-                    
                 </form>
+                
                 <p class="info">Registrarse</p>
             </div>
         </div>
     </div>
+    <script src="public/Js/login.js"></script>
+
 </body>
 
 </html>
